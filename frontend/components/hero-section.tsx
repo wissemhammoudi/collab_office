@@ -29,11 +29,11 @@ export function HeroSection() {
               </Badge>
             </div>
 
-            <h1 className="text-4xl lg:text-6xl font-bold text-foreground text-balance">{t("heroTitle")}</h1>
+            <h1 className="text-4xl lg:text-6xl font-bold text-foreground text-balance">{t("heroTitle") as string}</h1>
 
-            <p className="text-xl text-muted-foreground leading-relaxed">{t("heroSubtitle")}</p>
+            <p className="text-xl text-muted-foreground leading-relaxed">{t("heroSubtitle") as string}</p>
 
-            <p className="text-lg text-muted-foreground leading-relaxed">{t("heroDescription")}</p>
+            <p className="text-lg text-muted-foreground leading-relaxed">{t("heroDescription") as string}</p>
 
             <div className="grid grid-cols-2 gap-4 py-4">
               <div className="flex items-center space-x-3">
@@ -81,7 +81,7 @@ export function HeroSection() {
                 asChild
               >
                 <a href="/booking">
-                  {t("getStarted")}
+                  {t("getStarted") as string}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
@@ -91,7 +91,7 @@ export function HeroSection() {
                 className="border-2 border-amber-200 hover:bg-amber-50 hover:border-amber-300 transition-all duration-300 bg-transparent"
                 asChild
               >
-                <a href="/services">{t("learnMore")}</a>
+                <a href="/services">{t("learnMore") as string}</a>
               </Button>
             </div>
 
@@ -111,27 +111,27 @@ export function HeroSection() {
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <h3 className="font-semibold text-lg">Colab Office Ariana</h3>
-                  <Badge className="bg-green-100 text-green-800">{t("available")}</Badge>
+                  <Badge className="bg-green-100 text-green-800">{t("available") as string}</Badge>
                 </div>
 
                 <div className="bg-gradient-to-br from-cyan-50 to-amber-50 rounded-2xl p-6 text-center">
                   <MapPin className="h-16 w-16 text-cyan-600 mx-auto mb-4" />
-                  <p className="font-medium text-foreground">{t("locationName")}</p>
-                  <p className="text-sm text-muted-foreground">{t("locationAddress")}</p>
+                  <p className="font-medium text-foreground">{t("locationName") as string}</p>
+                  <p className="text-sm text-muted-foreground">{t("locationAddress") as string}</p>
                 </div>
 
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div className="space-y-1">
                     <p className="text-2xl font-bold text-green-600">15DT</p>
-                    <p className="text-xs text-muted-foreground">Étude{t("perHour")}</p>
+                    <p className="text-xs text-muted-foreground">Étude{t("perHour") as string}</p>
                   </div>
                   <div className="space-y-1">
                     <p className="text-2xl font-bold text-cyan-600">25DT</p>
-                    <p className="text-xs text-muted-foreground">Coworking{t("perHour")}</p>
+                    <p className="text-xs text-muted-foreground">Coworking{t("perHour") as string}</p>
                   </div>
                   <div className="space-y-1">
                     <p className="text-2xl font-bold text-amber-600">150DT</p>
-                    <p className="text-xs text-muted-foreground">Domiciliation{t("perMonth")}</p>
+                    <p className="text-xs text-muted-foreground">Domiciliation{t("perMonth") as string}</p>
                   </div>
                 </div>
               </div>

@@ -4,14 +4,12 @@ import { useState, useEffect } from "react"
 
 const translations = {
   fr: {
-    // Navigation
     home: "Accueil",
     about: "À propos",
     services: "Services",
     booking: "Réservation",
     contact: "Contact",
 
-    // Hero Section
     heroTitle: "Colab Office - Espace de coworking moderne à Ariana",
     heroSubtitle: "Travaillez, collaborez, réussissez dans notre espace professionnel",
     heroDescription:
@@ -19,7 +17,6 @@ const translations = {
     getStarted: "Réserver maintenant",
     learnMore: "En savoir plus",
 
-    // Location Section
     locationTitle: "Notre espace à Ariana",
     locationSubtitle: "Un environnement professionnel moderne pour votre réussite",
     locationName: "Colab Office Ariana",
@@ -68,7 +65,6 @@ const translations = {
     companyService: "Création d'entreprises",
     companyDesc: "Accompagnement personnalisé dans toutes vos démarches de création d'entreprise",
 
-    // WhatsApp translations
     whatsapp: {
       online: "En ligne",
       welcome: "Bonjour! Comment pouvons-nous vous aider aujourd'hui?",
@@ -156,14 +152,12 @@ const translations = {
     },
   },
   ar: {
-    // Navigation
     home: "الرئيسية",
     about: "حولنا",
     services: "الخدمات",
     booking: "الحجز",
     contact: "اتصل بنا",
 
-    // Hero Section
     heroTitle: "كولاب أوفيس - مساحة عمل مشتركة حديثة في أريانة",
     heroSubtitle: "اعمل، تعاون، انجح في بيئتنا المهنية",
     heroDescription:
@@ -171,7 +165,6 @@ const translations = {
     getStarted: "احجز الآن",
     learnMore: "اعرف المزيد",
 
-    // Location Section
     locationTitle: "مساحتنا في أريانة",
     locationSubtitle: "بيئة مهنية حديثة لنجاحك",
     locationName: "كولاب أوفيس أريانة",
@@ -185,7 +178,6 @@ const translations = {
     perMonth: "/شهر",
     perHour: "/ساعة",
 
-    // Features
     studyZones: "مساحات عمل هادئة",
     coworkingSpace: "مساحة عمل مشتركة تعاونية",
     meetingRooms: "قاعات اجتماعات مجهزة",
@@ -199,7 +191,6 @@ const translations = {
     companyCreation: "إنشاء الشركات",
     domiciliation: "خدمات التسكين",
 
-    // Booking
     bookingTitle: "احجز مساحتك",
     selectSpace: "اختر مساحتك",
     availableSpaces: "المساحات المتاحة",
@@ -208,7 +199,6 @@ const translations = {
     room2: "القاعة 2 - منطقة هادئة",
     selectRoom: "اختر القاعة",
 
-    // Services
     servicesTitle: "خدماتنا",
     servicesSubtitle: "حلول شاملة لنشاطك المهني",
     coworkingService: "مساحة عمل مشتركة حديثة",
@@ -220,7 +210,6 @@ const translations = {
     companyService: "إنشاء الشركات",
     companyDesc: "مرافقة شخصية في جميع إجراءات إنشاء شركتك",
 
-    // WhatsApp translations
     whatsapp: {
       online: "متصل",
       welcome: "مرحبا! كيف يمكننا مساعدتك اليوم؟",

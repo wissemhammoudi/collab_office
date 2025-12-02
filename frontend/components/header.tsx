@@ -18,19 +18,19 @@ export function Header() {
 
           <nav className="hidden md:flex items-center space-x-8">
             <a href="/" className="text-foreground hover:text-primary transition-colors">
-              {t("home")}
+              {t("home") as string}
             </a>
             <a href="/about" className="text-foreground hover:text-primary transition-colors">
-              {t("about")}
+              {t("about") as string}
             </a>
             <a href="/services" className="text-foreground hover:text-primary transition-colors">
-              {t("services")}
+              {t("services") as string}
             </a>
             <a href="/booking" className="text-foreground hover:text-primary transition-colors">
-              {t("booking")}
+              {t("booking") as string}
             </a>
             <a href="/contact" className="text-foreground hover:text-primary transition-colors">
-              {t("contact")}
+              {t("contact") as string}
             </a>
           </nav>
 

@@ -1,29 +1,25 @@
-# Multi-stage Dockerfile for Next.js app
-
-# 1) Install dependencies
-FROM node:20-alpine AS deps
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --no-audit --no-fund
-
-# 2) Build the app
-FROM node:20-alpine AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-RUN npm run build
-
-# 3) Run the app
-FROM node:20-alpine AS runner
-WORKDIR /app
-ENV NODE_ENV=production
-
-# Copy only what's needed to run
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/next.config.mjs ./
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/node_modules ./node_modules
-
-EXPOSE 3000
-CMD ["npm", "run", "start"]
+# ---- Build Stage ----
+    FROM node:18-alpine AS builder
+    WORKDIR /app
+    
+    # Copy only package files
+    COPY package*.json ./
+    RUN npm install --legacy-peer-deps
+    
+    # Copy the rest of the project
+    COPY . .
+    RUN npm run build
+    
+    # ---- Run Stage ----
+    FROM node:18-alpine
+    WORKDIR /app
+    
+    # Copy built app from builder
+    COPY --from=builder /app ./
+    
+    ENV NODE_ENV=production
+    ENV PORT=3000
+    EXPOSE 3000
+    
+    CMD ["npm", "start"]
+    

@@ -294,13 +294,13 @@ export default function BookingPage() {
         <section className="bg-gradient-to-br from-cyan-50 to-blue-50 py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance">{t("bookingTitle")}</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance">{t("bookingTitle") as string}</h1>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto text-pretty">
-                Réservez votre place dans notre zone d'étude silencieuse
+                {t("bookingSubtitle") as string}
               </p>
               <div className="flex items-center justify-center gap-2 mt-4 text-sm text-slate-600">
                 <MapPin className="h-4 w-4" />
-                <span>{t("locationAddress")}</span>
+                <span>{t("locationAddress") as string}</span>
               </div>
             </div>
           </div>
