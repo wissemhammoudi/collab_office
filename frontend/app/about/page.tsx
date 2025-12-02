@@ -127,57 +127,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team Section */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">Notre Équipe</h2>
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                Des professionnels expérimentés à votre service
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">AS</span>
-                  </div>
-                  <h3 className="font-semibold text-slate-900 mb-1">Ahmed Salhi</h3>
-                  <p className="text-cyan-600 text-sm mb-3">Directeur Général</p>
-                  <p className="text-sm text-slate-600">
-                    Expert en droit des affaires avec plus de 15 ans d'expérience
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">LB</span>
-                  </div>
-                  <h3 className="font-semibold text-slate-900 mb-1">Leila Ben Ali</h3>
-                  <p className="text-cyan-600 text-sm mb-3">Responsable Juridique</p>
-                  <p className="text-sm text-slate-600">
-                    Spécialiste en création d'entreprise et formalités administratives
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-teal-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">MK</span>
-                  </div>
-                  <h3 className="font-semibold text-slate-900 mb-1">Mohamed Karray</h3>
-                  <p className="text-cyan-600 text-sm mb-3">Conseiller Client</p>
-                  <p className="text-sm text-slate-600">Accompagnement personnalisé et suivi des dossiers clients</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
         {/* CTA Section */}
         <section className="bg-cyan-600 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
