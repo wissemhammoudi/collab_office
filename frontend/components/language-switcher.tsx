@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronDown, Globe } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -12,13 +12,28 @@ const languages = [
 ]
 
 export function LanguageSwitcher() {
-  const [currentLang, setCurrentLang] = useState("fr")
+  const [currentLang, setCurrentLang] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("preferred-language") || "fr"
+    }
+    return "fr"
+  })
+
+  useEffect(() => {
+    const handleLanguageChange = (event: CustomEvent) => {
+      setCurrentLang(event.detail)
+    }
+
+    window.addEventListener("languageChange", handleLanguageChange as EventListener)
+
+    return () => {
+      window.removeEventListener("languageChange", handleLanguageChange as EventListener)
+    }
+  }, [])
 
   const handleLanguageChange = (langCode: string) => {
     setCurrentLang(langCode)
-    // Store language preference
     localStorage.setItem("preferred-language", langCode)
-    // Trigger language change event
     window.dispatchEvent(new CustomEvent("languageChange", { detail: langCode }))
   }
 

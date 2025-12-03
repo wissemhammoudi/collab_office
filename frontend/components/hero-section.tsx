@@ -4,9 +4,15 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, CheckCircle, Star, ArrowRight, BookOpen, Wifi, Users, Building } from "lucide-react"
 import { useLanguage } from "@/hooks/use-language"
+import { useEffect, useState } from "react"
 
 export function HeroSection() {
   const { t } = useLanguage()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <section className="relative bg-gradient-to-br from-cyan-50 via-white to-amber-50 py-20 overflow-hidden">
@@ -29,11 +35,17 @@ export function HeroSection() {
               </Badge>
             </div>
 
-            <h1 className="text-4xl lg:text-6xl font-bold text-foreground text-balance">{t("heroTitle") as string}</h1>
+            <h1 className="text-4xl lg:text-6xl font-bold text-foreground text-balance">
+              {mounted ? t("heroTitle") : ""}
+            </h1>
 
-            <p className="text-xl text-muted-foreground leading-relaxed">{t("heroSubtitle") as string}</p>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              {mounted ? t("heroSubtitle") : ""}
+            </p>
 
-            <p className="text-lg text-muted-foreground leading-relaxed">{t("heroDescription") as string}</p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {mounted ? t("heroDescription") : ""}
+            </p>
 
             <div className="grid grid-cols-2 gap-4 py-4">
               <div className="flex items-center space-x-3">
@@ -81,7 +93,7 @@ export function HeroSection() {
                 asChild
               >
                 <a href="/booking">
-                  {t("getStarted") as string}
+                  {mounted ? t("getStarted") : ""}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
@@ -91,7 +103,7 @@ export function HeroSection() {
                 className="border-2 border-amber-200 hover:bg-amber-50 hover:border-amber-300 transition-all duration-300 bg-transparent"
                 asChild
               >
-                <a href="/services">{t("learnMore") as string}</a>
+                <a href="/services">{mounted ? t("learnMore") : ""}</a>
               </Button>
             </div>
 
@@ -111,27 +123,39 @@ export function HeroSection() {
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <h3 className="font-semibold text-lg">Colab Office Ariana</h3>
-                  <Badge className="bg-green-100 text-green-800">{t("available") as string}</Badge>
+                  <Badge className="bg-green-100 text-green-800">
+                    {mounted ? t("available") : ""}
+                  </Badge>
                 </div>
 
                 <div className="bg-gradient-to-br from-cyan-50 to-amber-50 rounded-2xl p-6 text-center">
                   <MapPin className="h-16 w-16 text-cyan-600 mx-auto mb-4" />
-                  <p className="font-medium text-foreground">{t("locationName") as string}</p>
-                  <p className="text-sm text-muted-foreground">{t("locationAddress") as string}</p>
+                  <p className="font-medium text-foreground">
+                    {mounted ? t("locationName") : ""}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {mounted ? t("locationAddress") : ""}
+                  </p>
                 </div>
 
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div className="space-y-1">
                     <p className="text-2xl font-bold text-green-600">15DT</p>
-                    <p className="text-xs text-muted-foreground">Étude{t("perHour") as string}</p>
+                    <p className="text-xs text-muted-foreground">
+                      Étude{mounted ? t("perHour") : ""}
+                    </p>
                   </div>
                   <div className="space-y-1">
                     <p className="text-2xl font-bold text-cyan-600">25DT</p>
-                    <p className="text-xs text-muted-foreground">Coworking{t("perHour") as string}</p>
+                    <p className="text-xs text-muted-foreground">
+                      Coworking{mounted ? t("perHour") : ""}
+                    </p>
                   </div>
                   <div className="space-y-1">
                     <p className="text-2xl font-bold text-amber-600">150DT</p>
-                    <p className="text-xs text-muted-foreground">Domiciliation{t("perMonth") as string}</p>
+                    <p className="text-xs text-muted-foreground">
+                      Domiciliation{mounted ? t("perMonth") : ""}
+                    </p>
                   </div>
                 </div>
               </div>

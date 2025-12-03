@@ -4,9 +4,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, Building, Users } from "lucide-react"
 import { useLanguage } from "@/hooks/use-language"
+import { useEffect, useState } from "react"
 
 export function LocationsSection() {
   const { t } = useLanguage()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const features = [
     "Espace de coworking moderne",
@@ -21,8 +27,12 @@ export function LocationsSection() {
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">{t("locationTitle") as string}</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t("locationSubtitle") as string}</p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+            {mounted ? t("locationTitle") : ""}
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {mounted ? t("locationSubtitle") : ""}
+          </p>
         </div>
 
         <div className="max-w-2xl mx-auto">
@@ -40,10 +50,12 @@ export function LocationsSection() {
               <div className="p-8 space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-2xl font-bold text-foreground">{t("locationName") as string}</h3>
+                    <h3 className="text-2xl font-bold text-foreground">
+                      {mounted ? t("locationName") : ""}
+                    </h3>
                     <div className="flex items-center text-sm text-muted-foreground mt-1">
                       <MapPin className="h-4 w-4 mr-1" />
-                      {t("locationAddress") as string}
+                      {mounted ? t("locationAddress") : ""}
                     </div>
                   </div>
                   <div className="flex items-center justify-center w-16 h-16 bg-cyan-100 rounded-full">
@@ -51,10 +63,14 @@ export function LocationsSection() {
                   </div>
                 </div>
 
-                <p className="text-muted-foreground leading-relaxed text-lg">{t("locationDescription") as string}</p>
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  {mounted ? t("locationDescription") : ""}
+                </p>
 
                 <div className="space-y-3">
-                  <p className="text-sm font-medium text-foreground">{t("advantages") as string} :</p>
+                  <p className="text-sm font-medium text-foreground">
+                    {mounted ? t("advantages") : ""} :
+                  </p>
                   <div className="grid grid-cols-2 gap-2">
                     {features.map((feature, idx) => (
                       <Badge key={idx} variant="secondary" className="text-sm justify-center py-2">
@@ -68,10 +84,10 @@ export function LocationsSection() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-sm text-muted-foreground">
                       <Users className="h-4 w-4 mr-1" />
-                      <span>{t("available") as string}</span>
+                      <span>{mounted ? t("available") : ""}</span>
                     </div>
                     <p className="text-xl font-bold text-cyan-600">
-                      {t("startingFrom") as string} 15 DT{t("perHour") as string}
+                      {mounted ? t("startingFrom") : ""} 15 DT{mounted ? t("perHour") : ""}
                     </p>
                   </div>
                 </div>

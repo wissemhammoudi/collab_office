@@ -1,9 +1,20 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { useLanguage } from "@/hooks/use-language"
 
 export function Footer() {
-  const { t } = useLanguage()
+  const { t, currentLang } = useLanguage()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return null
+  }
 
   return (  
     <footer className="bg-slate-900 text-white py-16">
@@ -98,7 +109,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-slate-700 mt-12 pt-8 text-center text-sm text-slate-400">
-        {t("copyright") as string}
+          {t("copyright") as string}
         </div>
       </div>
     </footer>

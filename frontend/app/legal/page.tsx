@@ -8,7 +8,19 @@ import { Separator } from "@/components/ui/separator"
 import { useLanguage } from "@/hooks/use-language"  
 
 export default function LegalPage() {
-  const { t } = useLanguage()
+  const { t, currentLang } = useLanguage()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr'
+    document.documentElement.lang = currentLang
+  }, [currentLang])
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return null
+  }
 
   return (
     <div className="min-h-screen">
@@ -32,7 +44,6 @@ export default function LegalPage() {
         <section className="py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-8">
-              {/* Company Information */}
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl">{t("company_info_title") as string}</CardTitle>
@@ -43,27 +54,27 @@ export default function LegalPage() {
                     <p className="text-slate-600">{t("company_name") as string}</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900 mb-2">{t("company_address_label")}</h3>
+                    <h3 className="font-semibold text-slate-900 mb-2">{t("company_address_label") as string}</h3>
                     <p className="text-slate-600">{t("company_address") as string}</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900 mb-2">{t("company_registry_label")}</h3>
+                    <h3 className="font-semibold text-slate-900 mb-2">{t("company_registry_label") as string}</h3>
                     <p className="text-slate-600">{t("company_registry") as string}</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900 mb-2">{t("tax_id_label")}</h3>
+                    <h3 className="font-semibold text-slate-900 mb-2">{t("tax_id_label") as string}</h3>
                     <p className="text-slate-600">{t("tax_id") as string}</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900 mb-2">{t("publication_director_label")}</h3>
+                    <h3 className="font-semibold text-slate-900 mb-2">{t("publication_director_label") as string}</h3>
                     <p className="text-slate-600">{t("publication_director") as string}</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900 mb-2">{t("contact_label")}</h3>
+                    <h3 className="font-semibold text-slate-900 mb-2">{t("contact_label") as string}</h3>
                     <p className="text-slate-600">
                       {t("email_label") as string}:{" "}
                       <a
-                        href={`mailto:${t("contact_email")}`}
+                        href={`mailto:${t("contact_email") as string}`}
                         className="hover:text-cyan-600 transition-colors"
                       >
                         {t("contact_email") as string}
