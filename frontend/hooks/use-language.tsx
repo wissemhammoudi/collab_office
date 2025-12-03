@@ -4,6 +4,184 @@ import { useState, useEffect } from "react"
 
 const translations = {
   fr: {
+    bookingHeroTitle: "Réservez votre espace",
+    bookingHeroSubtitle: "Choisissez l'espace parfait pour votre productivité",
+    bookingLocation: "Ariana, Tunisie",
+    
+    // Room Selection
+    selectSpaceTitle: "Sélectionnez votre espace - Colab Office Ariana",
+    studyZone1: "Zone d'étude 1",
+    studyZone2: "Zone d'étude 2",
+    trainingRoom: "Salle de Formation",
+    meetingRoom: "Salle de Réunion",
+    wholeRoomEquipment: "Salle entière avec équipement professionnel",
+    quietProductiveArea: "Espace calme et productif pour concentration maximale",
+    
+    // Legend
+    studyZoneLegend: "Zone d'étude (15 DT/jour)",
+    trainingRoomLegend: "Formation (150 DT/jour)",
+    meetingRoomLegend: "Réunion (80 DT/jour)",
+    occupiedLegend: "Occupé",
+    
+    // Room Names
+    quietStudyZone1: "Zone d'étude silencieuse 1",
+    quietStudyZone2: "Zone d'étude silencieuse 2",
+    trainingRoomName: "Salle de Formation",
+    meetingRoomName: "Salle de Réunion",
+    entranceLabel: "Entrée",
+    
+    // Booking Form
+    bookingFormTitle: "Réservation",
+    completeRoom: "Salle complète",
+    place: "Place",
+    persons: "personnes",
+    
+    // Duration Prices
+    twoHours: "2 heures",
+    halfDay: "Demi-journée",
+    fullDay: "Journée complète",
+    
+    // Space Types
+    studyZoneType: "Zone d'étude",
+    trainingRoomType: "Salle de Formation",
+    meetingRoomType: "Salle de Réunion",
+    spaceType: "Espace",
+    
+    // Features Section
+    bookingFeaturesTitle: "Pourquoi choisir Colab Office ?",
+    bookingFeaturesSubtitle: "Un environnement moderne et professionnel pour votre productivité",
+    
+    // Feature Cards
+    quietEnvironmentFeature: "Environnement calme",
+    quietEnvironmentDesc: "Zone silencieuse garantie pour votre concentration",
+    flexibleHoursFeature: "Horaires flexibles",
+    flexibleHoursDesc: "Ouvert de 8h à 22h, 7 jours sur 7",
+    completeServicesFeature: "Services complets",
+    completeServicesDesc: "Assistance administrative et création d'entreprises",
+    idealLocationFeature: "Emplacement idéal",
+    idealLocationDesc: "Au cœur d'Ariana, facilement accessible",
+    
+    // Booking Form Fields
+    selectDate: "Date",
+    startTime: "Heure de début",
+    selectTime: "Sélectionner l'heure",
+    durationLabel: "Durée",
+    totalLabel: "Total",
+    
+    // Actions
+    bookNowButton: "Réserver maintenant",
+    selectSpaceButton: "Sélectionnez une place",
+    selectSpacePrompt: "Cliquez sur une place disponible pour commencer votre réservation",
+    
+    // Messages
+    securePayment: "Paiement sécurisé",
+    freeCancellation: "Annulation gratuite jusqu'à 2h avant",
+    perDay: "/jour",
+    
+    // Time slots
+    hours: [
+      "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", 
+      "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", 
+      "20:00", "21:00"
+    ],
+    
+    // Additional Booking Info
+    capacity: "Capacité",
+    includes: "Comprend",
+    dayRate: "Tarif journée",
+    halfDayRate: "Tarif demi-journée",
+    twoHoursRate: "Tarif 2 heures",
+    
+    // Room Features
+    projector: "Projecteur",
+    whiteboard: "Tableau blanc",
+    wifi: "WiFi",
+    airConditioning: "Climatisation",
+    seats: "places",
+    tvScreen: "Écran TV",
+    videoConference: "Visioconférence",
+    silence: "Silence",
+    powerOutlet: "Prise électrique",
+    // Services Page
+servicesPageTitle: "Rise Services - Nos Solutions",
+servicesPageSubtitle: "Espace de coworking moderne, assistance administrative et services aux entreprises à Ariana",
+mainServicesTitle: "Nos Services Principaux",
+mainServicesSubtitle: "Solutions complètes pour votre activité professionnelle dans un environnement moderne",
+collaborative: "Collaboratif",
+openPrivateSpaces: "Espaces ouverts et privés",
+freeHighSpeedWifi: "WiFi haut débit gratuit",
+equippedMeetingRooms: "Salles de réunion équipées",
+freeCoffeeTea: "Café et thé gratuits",
+perHour: "/heure",
+reserve: "Réserver",
+concentration: "Concentration",
+studyZonesTitle: "Zones d'étude silencieuses",
+studyZonesDesc: "Espaces dédiés à l'étude dans un environnement calme et concentré",
+silenceGuaranteed: "Silence garanti",
+electricOutlets: "Prises électriques à chaque place",
+optimalLighting: "Éclairage optimal",
+completeSupport: "Support complet",
+adminServiceTitle: "Assistance administrative",
+adminServiceDesc: "Support complet pour vos démarches administratives et gestion d'entreprise",
+companyCreationService: "Création d'entreprises",
+adminFormalities: "Formalités administratives",
+legalAdvice: "Conseil juridique",
+personalizedSupport: "Accompagnement personnalisé",
+onQuote: "Sur devis",
+consult: "Consulter",
+prestigiousAddress: "Adresse prestigieuse",
+domiciliationTitle: "Domiciliation d'entreprise",
+domiciliationDesc: "Adresse professionnelle prestigieuse pour votre société à Ariana",
+prestigiousCommercialAddress: "Adresse commerciale prestigieuse",
+mailReception: "Réception du courrier",
+phoneService: "Permanence téléphonique",
+meetingRoomIncluded: "Salle de réunion incluse",
+perMonth: "/mois",
+getInfo: "S'informer",
+includedServicesTitle: "Services inclus",
+includedServicesSubtitle: "Tous nos espaces incluent ces services pour votre confort et productivité",
+highSpeedWifiTitle: "WiFi haut débit",
+highSpeedWifiDesc: "Connexion internet rapide et stable",
+free: "Gratuit",
+coffeeTea: "Café & Thé",
+coffeeTeaDesc: "Boissons chaudes à volonté",
+electricOutletsTitle: "Prises électriques",
+electricOutletsDesc: "À chaque place de travail",
+included: "Inclus",
+quietEnvironmentTitle: "Environnement calme",
+quietEnvironmentDesc: "Zones silencieuses garanties",
+guaranteed: "Garanti",
+readyToDiscover: "Prêt à découvrir Rise Services ?",
+ctaServicesText: "Travaillez, collaborez, réussissez dans notre espace moderne à Ariana",
+reserveSpace: "Réserver un espace",
+
+    companyService: "Création d'entreprises",
+    companyDesc: "Accompagnement personnalisé dans toutes vos démarches de création d'entreprise",
+
+    // About Page - ADD THESE
+    aboutTitle: "À propos de Colab Office",
+    aboutSubtitle: "Votre partenaire de confiance pour tous vos besoins d'entreprise en Tunisie. Nous accompagnons les entrepreneurs dans leur réussite depuis plus de 10 ans.",
+    ourMission: "Notre Mission",
+    missionText1: "Chez Colab Office, nous croyons que chaque entrepreneur mérite un accompagnement professionnel et personnalisé. Notre mission est de simplifier les démarches administratives et juridiques pour permettre aux entreprises de se concentrer sur leur cœur de métier.",
+    missionText2: "Nous offrons des solutions complètes incluant l'assistance administrative & création de sociétés, la domiciliation & services aux entreprises, ainsi qu'un espace de coworking moderne à Ariana pour favoriser la collaboration et la réussite professionnelle.",
+    companiesSupported: "Entreprises accompagnées",
+    yearsExperience: "Années d'expérience",
+    isoCertified: "Certifié ISO 9001",
+    qualityGuaranteed: "Qualité garantie",
+    ourValues: "Nos Valeurs",
+    valuesPrinciples: "Les principes qui guident notre travail au quotidien",
+    trust: "Confiance",
+    trustDesc: "Transparence et intégrité dans toutes nos relations clients",
+    excellence: "Excellence",
+    excellenceDesc: "Qualité de service irréprochable et expertise reconnue",
+    responsiveness: "Réactivité",
+    responsivenessDesc: "Réponses rapides et traitement efficace de vos demandes",
+    proximity: "Proximité",
+    proximityDesc: "Accompagnement personnalisé et relation de proximité",
+    readyToStart: "Prêt à démarrer votre projet ?",
+    ctaText: "Bénéficiez de notre assistance administrative & création de sociétés, domiciliation & services aux entreprises dans notre espace moderne à Ariana",
+    contactUs: "Nous contacter",
+
     contactTitle: "Contactez-nous",
     contactSubtitle: "Notre équipe est à votre disposition pour répondre à toutes vos questions et vous accompagner dans vos projets",
     contactFormTitle: "Envoyez-nous un message",
@@ -129,6 +307,10 @@ const translations = {
     services: "Services",
     booking: "Réservation",
     contact: "Contact",
+    mapCity: "Tunis, Tunisie",
+    getDirections: "Obtenir l'itinéraire",
+    callUs: "Nous appeler",
+    seeOnGoogleMaps: "Voir sur Google Maps",
 
     heroTitle: "Colab Office - Espace de coworking moderne à Ariana",
     heroSubtitle: "Travaillez, collaborez, réussissez dans notre espace professionnel",
@@ -190,6 +372,185 @@ const translations = {
 
   },
   en: {
+
+    // Booking Page - Hero
+    bookingHeroTitle: "Book Your Space",
+    bookingHeroSubtitle: "Choose the perfect space for your productivity",
+    bookingLocation: "Ariana, Tunisia",
+    
+    // Room Selection
+    selectSpaceTitle: "Select Your Space - Colab Office Ariana",
+    studyZone1: "Study Zone 1",
+    studyZone2: "Study Zone 2",
+    trainingRoom: "Training Room",
+    meetingRoom: "Meeting Room",
+    wholeRoomEquipment: "Whole room with professional equipment",
+    quietProductiveArea: "Quiet and productive area for maximum concentration",
+    
+    // Legend
+    studyZoneLegend: "Study zone (15 DT/day)",
+    trainingRoomLegend: "Training (150 DT/day)",
+    meetingRoomLegend: "Meeting (80 DT/day)",
+    occupiedLegend: "Occupied",
+    
+    // Room Names
+    quietStudyZone1: "Quiet Study Zone 1",
+    quietStudyZone2: "Quiet Study Zone 2",
+    trainingRoomName: "Training Room",
+    meetingRoomName: "Meeting Room",
+    entranceLabel: "Entrance",
+    
+    // Booking Form
+    bookingFormTitle: "Booking",
+    completeRoom: "Complete room",
+    place: "Place",
+    persons: "persons",
+    
+    // Duration Prices
+    twoHours: "2 hours",
+    halfDay: "Half day",
+    fullDay: "Full day",
+    
+    // Space Types
+    studyZoneType: "Study Zone",
+    trainingRoomType: "Training Room",
+    meetingRoomType: "Meeting Room",
+    spaceType: "Space",
+    
+    // Features Section
+    bookingFeaturesTitle: "Why Choose Colab Office?",
+    bookingFeaturesSubtitle: "A modern and professional environment for your productivity",
+    
+    // Feature Cards
+    quietEnvironmentFeature: "Quiet Environment",
+    quietEnvironmentDesc: "Guaranteed silent zone for your concentration",
+    flexibleHoursFeature: "Flexible Hours",
+    flexibleHoursDesc: "Open from 8 AM to 10 PM, 7 days a week",
+    completeServicesFeature: "Complete Services",
+    completeServicesDesc: "Administrative assistance and company creation",
+    idealLocationFeature: "Ideal Location",
+    idealLocationDesc: "In the heart of Ariana, easily accessible",
+    
+    // Booking Form Fields
+    selectDate: "Date",
+    startTime: "Start Time",
+    selectTime: "Select time",
+    durationLabel: "Duration",
+    totalLabel: "Total",
+    
+    // Actions
+    bookNowButton: "Book Now",
+    selectSpaceButton: "Select a place",
+    selectSpacePrompt: "Click on an available space to start your booking",
+    
+    // Messages
+    securePayment: "Secure payment",
+    freeCancellation: "Free cancellation up to 2 hours before",
+    perDay: "/day",
+    
+    // Time slots
+    hours: [
+      "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", 
+      "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", 
+      "20:00", "21:00"
+    ],
+    
+    // Additional Booking Info
+    capacity: "Capacity",
+    includes: "Includes",
+    dayRate: "Day rate",
+    halfDayRate: "Half day rate",
+    twoHoursRate: "2 hours rate",
+    
+    // Room Features
+    projector: "Projector",
+    whiteboard: "Whiteboard",
+    wifi: "WiFi",
+    airConditioning: "Air conditioning",
+    seats: "seats",
+    tvScreen: "TV Screen",
+    videoConference: "Video conference",
+    silence: "Silence",
+    powerOutlet: "Power outlet",
+    // Services Page
+servicesPageTitle: "Rise Services - Our Solutions",
+servicesPageSubtitle: "Modern coworking space, administrative assistance and business services in Ariana",
+mainServicesTitle: "Our Main Services",
+mainServicesSubtitle: "Complete solutions for your professional activity in a modern environment",
+collaborative: "Collaborative",
+openPrivateSpaces: "Open and private spaces",
+freeHighSpeedWifi: "Free high-speed WiFi",
+equippedMeetingRooms: "Equipped meeting rooms",
+freeCoffeeTea: "Free coffee and tea",
+perHour: "/hour",
+reserve: "Reserve",
+concentration: "Concentration",
+studyZonesTitle: "Quiet study zones",
+studyZonesDesc: "Dedicated study spaces in a calm and focused environment",
+silenceGuaranteed: "Silence guaranteed",
+electricOutlets: "Electric outlets at each seat",
+optimalLighting: "Optimal lighting",
+completeSupport: "Complete support",
+adminServiceTitle: "Administrative assistance",
+adminServiceDesc: "Complete support for your administrative procedures and business management",
+companyCreationService: "Company creation",
+adminFormalities: "Administrative formalities",
+legalAdvice: "Legal advice",
+personalizedSupport: "Personalized support",
+onQuote: "On quote",
+consult: "Consult",
+prestigiousAddress: "Prestigious address",
+domiciliationTitle: "Business domiciliation",
+domiciliationDesc: "Prestigious professional address for your company in Ariana",
+prestigiousCommercialAddress: "Prestigious commercial address",
+mailReception: "Mail reception",
+phoneService: "Phone service",
+meetingRoomIncluded: "Meeting room included",
+perMonth: "/month",
+getInfo: "Get info",
+includedServicesTitle: "Included Services",
+includedServicesSubtitle: "All our spaces include these services for your comfort and productivity",
+highSpeedWifiTitle: "High-speed WiFi",
+highSpeedWifiDesc: "Fast and stable internet connection",
+free: "Free",
+coffeeTea: "Coffee & Tea",
+coffeeTeaDesc: "Unlimited hot beverages",
+electricOutletsTitle: "Electric outlets",
+electricOutletsDesc: "At each workstation",
+included: "Included",
+quietEnvironmentTitle: "Quiet environment",
+quietEnvironmentDesc: "Guaranteed quiet zones",
+guaranteed: "Guaranteed",
+readyToDiscover: "Ready to discover Rise Services?",
+ctaServicesText: "Work, collaborate, succeed in our modern space in Ariana",
+reserveSpace: "Reserve a space",
+// ... all your existing English translations ...
+    companyService: "Company creation",
+    companyDesc: "Personalized support in all your company creation procedures",
+
+    // About Page - ADD THESE
+    aboutTitle: "About Colab Office",
+    aboutSubtitle: "Your trusted partner for all your business needs in Tunisia. We have been supporting entrepreneurs in their success for over 10 years.",
+    ourMission: "Our Mission",
+    missionText1: "At Colab Office, we believe that every entrepreneur deserves professional and personalized support. Our mission is to simplify administrative and legal procedures to allow businesses to focus on their core business.",
+    missionText2: "We offer complete solutions including administrative assistance & company creation, domiciliation & business services, as well as a modern coworking space in Ariana to promote collaboration and professional success.",
+    companiesSupported: "Companies supported",
+    yearsExperience: "Years of experience",
+    isoCertified: "ISO 9001 Certified",
+    qualityGuaranteed: "Quality guaranteed",
+    ourValues: "Our Values",
+    valuesPrinciples: "The principles that guide our daily work",
+    trust: "Trust",
+    trustDesc: "Transparency and integrity in all our client relationships",
+    excellence: "Excellence",
+    excellenceDesc: "Impeccable service quality and recognized expertise",
+    responsiveness: "Responsiveness",
+    responsivenessDesc: "Fast responses and efficient handling of your requests",
+    proximity: "Proximity",
+    proximityDesc: "Personalized support and close relationship",
+    readyToStart: "Ready to start your project?",
+    ctaText: "Benefit from our administrative assistance & company creation, domiciliation & business services in our modern space in Ariana",
+    contactUs: "Contact us",    
 
     contactTitle: "Contact Us",
     contactSubtitle: "Our team is available to answer all your questions and assist you with your projects",
@@ -363,7 +724,10 @@ const translations = {
     room1: "Room 1 - Collaborative Space",
     room2: "Room 2 - Quiet Zone",
     selectRoom: "Choose room",
-
+    mapCity: "Tunis, Tunisia",
+    getDirections: "Get Directions",
+    callUs: "Call Us",
+    seeOnGoogleMaps: "View on Google Maps",
     // Services
     servicesTitle: "Our Services",
     servicesSubtitle: "Complete solutions for your professional activity",
@@ -379,6 +743,189 @@ const translations = {
   },
   ar: {
 
+    // Booking Page - Hero
+    bookingHeroTitle: "احجز مساحتك",
+    bookingHeroSubtitle: "اختر المساحة المثالية لإنتاجيتك",
+    bookingLocation: "أريانة، تونس",
+    
+    // Room Selection
+    selectSpaceTitle: "اختر مساحتك - كولاب أوفيس أريانة",
+    studyZone1: "منطقة الدراسة 1",
+    studyZone2: "منطقة الدراسة 2",
+    trainingRoom: "قاعة التدريب",
+    meetingRoom: "قاعة الاجتماعات",
+    wholeRoomEquipment: "قاعة كاملة مع معدات مهنية",
+    quietProductiveArea: "منطقة هادئة ومنتجة لأقصى تركيز",
+    
+    // Legend
+    studyZoneLegend: "منطقة الدراسة (15 دينار/يوم)",
+    trainingRoomLegend: "تدريب (150 دينار/يوم)",
+    meetingRoomLegend: "اجتماع (80 دينار/يوم)",
+    occupiedLegend: "محجوز",
+    
+    // Room Names
+    quietStudyZone1: "منطقة الدراسة الهادئة 1",
+    quietStudyZone2: "منطقة الدراسة الهادئة 2",
+    trainingRoomName: "قاعة التدريب",
+    meetingRoomName: "قاعة الاجتماعات",
+    entranceLabel: "المدخل",
+    
+    // Booking Form
+    bookingFormTitle: "الحجز",
+    completeRoom: "قاعة كاملة",
+    place: "مكان",
+    persons: "أشخاص",
+    
+    // Duration Prices
+    twoHours: "ساعتين",
+    halfDay: "نصف يوم",
+    fullDay: "يوم كامل",
+    
+    // Space Types
+    studyZoneType: "منطقة الدراسة",
+    trainingRoomType: "قاعة التدريب",
+    meetingRoomType: "قاعة الاجتماعات",
+    spaceType: "مساحة",
+    
+    // Features Section
+    bookingFeaturesTitle: "لماذا تختار كولاب أوفيس؟",
+    bookingFeaturesSubtitle: "بيئة حديثة واحترافية لإنتاجيتك",
+    
+    // Feature Cards
+    quietEnvironmentFeature: "بيئة هادئة",
+    quietEnvironmentDesc: "منطقة صامتة مضمونة لتركيزك",
+    flexibleHoursFeature: "ساعات مرنة",
+    flexibleHoursDesc: "مفتوح من الساعة 8 صباحاً حتى 10 مساءً، 7 أيام في الأسبوع",
+    completeServicesFeature: "خدمات كاملة",
+    completeServicesDesc: "المساعدة الإدارية وإنشاء الشركات",
+    idealLocationFeature: "موقع مثالي",
+    idealLocationDesc: "في قلب أريانة، يسهل الوصول إليه",
+    
+    // Booking Form Fields
+    selectDate: "التاريخ",
+    startTime: "وقت البدء",
+    selectTime: "اختر الوقت",
+    durationLabel: "المدة",
+    totalLabel: "الإجمالي",
+    
+    // Actions
+    bookNowButton: "احجز الآن",
+    selectSpaceButton: "اختر مكاناً",
+    selectSpacePrompt: "انقر على مكان متاح لبدء الحجز",
+    
+    // Messages
+    securePayment: "دفع آمن",
+    freeCancellation: "إلغاء مجاني حتى ساعتين قبل",
+    perDay: "/يوم",
+    
+    // Time slots
+    hours: [
+      "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", 
+      "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", 
+      "20:00", "21:00"
+    ],
+    
+    // Additional Booking Info
+    capacity: "السعة",
+    includes: "يشمل",
+    dayRate: "سعر اليوم",
+    halfDayRate: "سعر نصف اليوم",
+    twoHoursRate: "سعر ساعتين",
+    
+    // Room Features
+    projector: "عارض",
+    whiteboard: "لوح أبيض",
+    wifi: "واي فاي",
+    airConditioning: "مكيف هواء",
+    seats: "مقاعد",
+    tvScreen: "شاشة تلفزيون",
+    videoConference: "مؤتمر فيديو",
+    silence: "صمت",
+    powerOutlet: "مقبس كهرباء",
+// Services Page
+servicesPageTitle: "رايز سيرفيسز - حلولنا",
+servicesPageSubtitle: "مساحة عمل مشتركة حديثة، مساعدة إدارية وخدمات أعمال في أريانة",
+mainServicesTitle: "خدماتنا الرئيسية",
+mainServicesSubtitle: "حلول شاملة لنشاطك المهني في بيئة حديثة",
+collaborative: "تعاوني",
+openPrivateSpaces: "مساحات مفتوحة وخاصة",
+freeHighSpeedWifi: "واي فاي مجاني عالي السرعة",
+equippedMeetingRooms: "قاعات اجتماعات مجهزة",
+freeCoffeeTea: "قهوة وشاي مجاني",
+perHour: "/ساعة",
+reserve: "احجز",
+concentration: "تركيز",
+studyZonesTitle: "مناطق دراسة هادئة",
+studyZonesDesc: "مساحات مخصصة للدراسة في بيئة هادئة ومركزة",
+silenceGuaranteed: "الصمت مضمون",
+electricOutlets: "مقابس كهربائية في كل مكان",
+optimalLighting: "إضاءة مثالية",
+completeSupport: "دعم كامل",
+adminServiceTitle: "المساعدة الإدارية",
+adminServiceDesc: "دعم كامل لإجراءاتك الإدارية وإدارة الأعمال",
+companyCreationService: "إنشاء الشركات",
+adminFormalities: "الإجراءات الإدارية",
+legalAdvice: "استشارات قانونية",
+personalizedSupport: "دعم شخصي",
+onQuote: "حسب الطلب",
+consult: "استشر",
+prestigiousAddress: "عنوان مرموق",
+domiciliationTitle: "تسكين الشركات",
+domiciliationDesc: "عنوان مهني مرموق لشركتك في أريانة",
+prestigiousCommercialAddress: "عنوان تجاري مرموق",
+mailReception: "استقبال البريد",
+phoneService: "خدمة هاتفية",
+meetingRoomIncluded: "قاعة اجتماعات مشمولة",
+perMonth: "/شهر",
+getInfo: "احصل على معلومات",
+includedServicesTitle: "الخدمات المشمولة",
+includedServicesSubtitle: "جميع مساحاتنا تشمل هذه الخدمات لراحتك وإنتاجيتك",
+highSpeedWifiTitle: "واي فاي عالي السرعة",
+highSpeedWifiDesc: "اتصال إنترنت سريع ومستقر",
+free: "مجاني",
+coffeeTea: "قهوة وشاي",
+coffeeTeaDesc: "مشروبات ساخنة بلا حدود",
+electricOutletsTitle: "مقابس كهربائية",
+electricOutletsDesc: "في كل مكان عمل",
+included: "مشمول",
+quietEnvironmentTitle: "بيئة هادئة",
+quietEnvironmentDesc: "مناطق هادئة مضمونة",
+guaranteed: "مضمون",
+readyToDiscover: "هل أنت مستعد لاكتشاف رايز سيرفيسز؟",
+ctaServicesText: "اعمل، تعاون، انجح في مساحتنا الحديثة في أريانة",
+reserveSpace: "احجز مساحة",
+    companyService: "إنشاء الشركات",
+    companyDesc: "مرافقة شخصية في جميع إجراءات إنشاء شركتك",
+
+    // About Page - ADD THESE
+    aboutTitle: "حول كولاب أوفيس",
+    aboutSubtitle: "شريكك الموثوق لجميع احتياجات عملك في تونس. نرافق رواد الأعمال في نجاحهم منذ أكثر من 10 سنوات.",
+    ourMission: "مهمتنا",
+    missionText1: "في كولاب أوفيس، نؤمن بأن كل رائد أعمال يستحق دعمًا مهنيًا وشخصيًا. مهمتنا هي تبسيط الإجراءات الإدارية والقانونية للسماح للشركات بالتركيز على أعمالها الأساسية.",
+    missionText2: "نقدم حلولاً شاملة تشمل المساعدة الإدارية وإنشاء الشركات، والتسكين وخدمات الأعمال، بالإضافة إلى مساحة عمل مشتركة حديثة في أريانة لتعزيز التعاون والنجاح المهني.",
+    companiesSupported: "الشركات المدعومة",
+    yearsExperience: "سنوات من الخبرة",
+    isoCertified: "معتمد ISO 9001",
+    qualityGuaranteed: "جودة مضمونة",
+    ourValues: "قيمنا",
+    valuesPrinciples: "المبادئ التي توجه عملنا اليومي",
+    trust: "الثقة",
+    trustDesc: "الشفافية والنزاهة في جميع علاقاتنا مع العملاء",
+    excellence: "التميز",
+    excellenceDesc: "جودة خدمة لا تشوبها شائبة وخبرة معترف بها",
+    responsiveness: "السرعة",
+    responsivenessDesc: "ردود سريعة ومعالجة فعالة لطلباتك",
+    proximity: "القرب",
+    proximityDesc: "دعم شخصي وعلاقة قريبة",
+    readyToStart: "هل أنت مستعد لبدء مشروعك؟" ,
+    ctaText: "استفد من مساعدتنا الإدارية وإنشاء الشركات، والتسكين وخدمات الأعمال في مساحتنا الحديثة في أريانة",
+    contactUs: "اتصل بنا",
+
+    mapCity: "تونس، تونس",
+    getDirections: "الحصول على الاتجاهات",
+    callUs: "اتصل بنا",
+    seeOnGoogleMaps: "عرض على خرائط جوجل",
+    
     // ... your existing translations
     contactTitle: "اتصل بنا",
     contactSubtitle: "فريقنا متاح للإجابة على جميع أسئلتك ومساعدتك في مشاريعك",

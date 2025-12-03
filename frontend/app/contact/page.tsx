@@ -323,7 +323,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-semibold text-slate-900">{t("mapTitle") as string}</h3>
                     <p className="text-slate-600 mt-1">{t("mapAddress") as string}</p>
-                    <p className="text-slate-500 text-sm mt-1">Tunis, Tunisie</p>
+                    <p className="text-slate-500 text-sm mt-1">{t("mapCity") as string}</p>
                     <div className="mt-4 flex flex-wrap gap-3">
                       {/* Bouton Get Directions - Même couleur que Send Message */}
                       <a
@@ -337,22 +337,13 @@ export default function ContactPage() {
                       </a>
                       
                       <a
-                        href="tel:+21612345678"
+                        href={`tel:${t("contact_phone_number").replace(/\s/g, "")}`}
                         className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium border border-slate-200"
                       >
                         <Phone className="h-4 w-4 mr-2" />
                         {t("callUs") as string}
                       </a>
                       
-                      <a
-                        href="https://www.google.com/maps/place/ColabOffice/@36.862834,10.201205,17z"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium border border-slate-200"
-                      >
-                        <MapPin className="h-4 w-4 mr-2" />
-                        Voir sur Google Maps
-                      </a>
                     </div>
                   </div>
                 </div>
