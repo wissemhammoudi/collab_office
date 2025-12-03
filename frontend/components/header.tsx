@@ -34,6 +34,9 @@ export function Header() {
             <a href="/booking" className="text-foreground hover:text-primary transition-colors">
               {mounted ? t("booking") : ""}
             </a>
+            <a href="/faq" className="text-foreground hover:text-primary transition-colors">
+              {mounted ? t("faq") : ""}
+            </a>
             <a href="/contact" className="text-foreground hover:text-primary transition-colors">
               {mounted ? t("contact") : ""}
             </a>

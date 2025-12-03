@@ -97,8 +97,8 @@ export default function AboutPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Shield className="h-6 w-6 text-cyan-600" />
+                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Shield className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">
                     {t("trust") as string}
@@ -111,8 +111,8 @@ export default function AboutPage() {
 
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Award className="h-6 w-6 text-amber-600" />
+                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Award className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">
                     {t("excellence") as string}
@@ -125,8 +125,8 @@ export default function AboutPage() {
 
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Clock className="h-6 w-6 text-green-600" />
+                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Clock className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">
                     {t("responsiveness") as string}
@@ -139,8 +139,8 @@ export default function AboutPage() {
 
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-6 w-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Users className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">
                     {t("proximity") as string}

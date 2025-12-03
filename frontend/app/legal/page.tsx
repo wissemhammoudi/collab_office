@@ -82,7 +82,7 @@ export default function LegalPage() {
                       <br />
                       {t("phone_label") as string}:{" "}
                       <a
-                        href={`https://wa.me/${t("contact_phone_number").replace(/\s/g, "")}`}
+                        href={`https://wa.me/${(Array.isArray(t("contact_phone_number")) ? (t("contact_phone_number") as string[])[0] : (t("contact_phone_number") as string)).replace(/\s/g, "")}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-cyan-600 transition-colors"

@@ -6,9 +6,9 @@ import { ChevronDown, Globe } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 const languages = [
-  { code: "fr", name: "Français", flag: "🇫🇷" },
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "ar", name: "العربية", flag: "🇹🇳" },
+  { code: "fr", name: "Français", flag: "" },
+  { code: "en", name: "English", flag: "" },
+  { code: "ar", name: "العربية", flag: "" },
 ]
 
 export function LanguageSwitcher() {

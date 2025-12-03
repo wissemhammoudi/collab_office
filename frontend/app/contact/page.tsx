@@ -175,8 +175,8 @@ export default function ContactPage() {
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <MapPin className="h-6 w-6 text-cyan-600" />
+                        <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <MapPin className="h-6 w-6 text-white" />
                         </div>
                         <div>
                           <h3 className="font-semibold text-slate-900 mb-2">{t("address") as string}</h3>
@@ -194,14 +194,14 @@ export default function ContactPage() {
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Phone className="h-6 w-6 text-green-600" />
+                        <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Phone className="h-6 w-6 text-white" /> 
                         </div>
                         <div>
                           <h3 className="font-semibold text-slate-900 mb-2">{t("phone") as string}</h3>
                           <p className="text-slate-600">
                             <a
-                              href={`https://wa.me/${t("contact_phone_number").replace(/\s/g, "")}`}
+                              href={`https://wa.me/${(Array.isArray(t("contact_phone_number")) ? (t("contact_phone_number") as string[])[0] : (t("contact_phone_number") as string)).replace(/\s/g, "")}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="hover:text-cyan-600 transition-colors"
@@ -218,9 +218,9 @@ export default function ContactPage() {
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Mail className="h-6 w-6 text-blue-600" />
-                        </div>
+                        <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Mail className="h-6 w-6 text-white" />
+                        </div>    
                         <div>
                           <h3 className="font-semibold text-slate-900 mb-2">{t("email") as string}</h3>
                           <p className="text-slate-600">
@@ -235,8 +235,8 @@ export default function ContactPage() {
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Clock className="h-6 w-6 text-amber-600" />
+                        <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Clock className="h-6 w-6 text-white" />
                         </div>
                         <div>
                           <h3 className="font-semibold text-slate-900 mb-2">{t("openingHours") as string}</h3>
@@ -252,7 +252,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Quick Contact */}
-                <Card className="bg-cyan-50 border-cyan-200">
+                <Card >
                   <CardHeader>
                     <CardTitle className="text-cyan-900">{t("quickContactTitle") as string}</CardTitle>
                   </CardHeader>
@@ -263,7 +263,7 @@ export default function ContactPage() {
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Button
                         variant="outline"
-                        className="flex-1 border-cyan-300 text-cyan-700 hover:bg-cyan-100 bg-transparent"
+                        className="flex-1 "
                         asChild
                       >
                         <a href="https://wa.me/21620123456" target="_blank" rel="noopener noreferrer">
@@ -273,7 +273,7 @@ export default function ContactPage() {
                       </Button>
                       <Button
                         variant="outline"
-                        className="flex-1 border-cyan-300 text-cyan-700 hover:bg-cyan-100 bg-transparent"
+                        className="flex-1"
                         asChild
                       >
                         <a href="https://wa.me/21620123456" target="_blank" rel="noopener noreferrer">
@@ -314,7 +314,6 @@ export default function ContactPage() {
                 />
               </div>
               
-              {/* Informations supplémentaires sous la carte */}
               <div className="p-6 bg-white">
                 <div className="flex items-start space-x-4">
                   <div className="bg-gradient-to-br from-cyan-100 to-blue-100 p-3 rounded-lg shadow-sm">
@@ -330,15 +329,15 @@ export default function ContactPage() {
                         href="https://www.google.com/maps/dir/?api=1&destination=ColabOffice&ll=36.862834,10.201205"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium shadow-sm hover:shadow"
+                        className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium shadow-sm hover:shadow"
                       >
                         <Navigation className="h-4 w-4 mr-2" />
                         {t("getDirections") as string}
                       </a>
                       
                       <a
-                        href={`tel:${t("contact_phone_number").replace(/\s/g, "")}`}
-                        className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium border border-slate-200"
+                        href={`tel:${(Array.isArray(t("contact_phone_number")) ? (t("contact_phone_number") as string[])[0] : (t("contact_phone_number") as string)).replace(/\s/g, "")}`}
+                        className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium shadow-sm hover:shadow"
                       >
                         <Phone className="h-4 w-4 mr-2" />
                         {t("callUs") as string}
@@ -352,62 +351,7 @@ export default function ContactPage() {
           </Card>
         </div>
       </section>
-        {/* FAQ Section */}
-        <section className="py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">{t("faqTitle") as string}</h2>
-              <p className="text-lg text-slate-600">{t("faqSubtitle") as string}</p>
-            </div>
-
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">{t("faq1Question") as string}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-600">{t("faq1Answer") as string}</p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">{t("faq2Question") as string}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-600">{t("faq2Answer") as string}</p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">{t("faq3Question") as string}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-600">{t("faq3Answer") as string}</p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">{t("faq4Question") as string}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-600">{t("faq4Answer") as string}</p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">{t("faq5Question") as string}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-600">{t("faq5Answer") as string}</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
+        
       </main>
       <Footer />
     </div>
