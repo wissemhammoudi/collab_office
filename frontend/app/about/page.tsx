@@ -14,13 +14,25 @@ export default function AboutPage() {
 
   useEffect(() => {
     setMounted(true)
-    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr'
-    document.documentElement.lang = currentLang
+    if (currentLang) {
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr'
+      document.documentElement.lang = currentLang
+    }
   }, [currentLang])
 
-  // Prevent hydration mismatch by not rendering until mounted
+  // Instead of returning null, show a loading state
   if (!mounted) {
-    return null
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    )
+  }
+
+  // Helper function to safely get string from translation
+  const getTranslation = (key: string): string => {
+    const translation = t(key)
+    return Array.isArray(translation) ? translation.join(' ') : translation || ''
   }
 
   return (
@@ -32,10 +44,10 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance">
-                {t("aboutTitle") as string}
+                {getTranslation("aboutTitle")}
               </h1>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto text-pretty">
-                {t("aboutSubtitle") as string}
+                {getTranslation("aboutSubtitle")}
               </p>
             </div>
           </div>
@@ -47,25 +59,25 @@ export default function AboutPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl font-bold text-slate-900 mb-6">
-                  {t("ourMission") as string}
+                  {getTranslation("ourMission")}
                 </h2>
                 <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                  {t("missionText1") as string}
+                  {getTranslation("missionText1")}
                 </p>
                 <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                  {t("missionText2") as string}
+                  {getTranslation("missionText2")}
                 </p>
                 <div className="grid grid-cols-2 gap-6 mt-8">
                   <div className="text-center p-4 bg-cyan-50 rounded-lg">
                     <div className="text-2xl font-bold text-cyan-600">500+</div>
                     <div className="text-sm text-slate-600">
-                      {t("companiesSupported") as string}
+                      {getTranslation("companiesSupported")}
                     </div>
                   </div>
                   <div className="text-center p-4 bg-amber-50 rounded-lg">
                     <div className="text-2xl font-bold text-amber-600">10+</div>
                     <div className="text-sm text-slate-600">
-                      {t("yearsExperience") as string}
+                      {getTranslation("yearsExperience")}
                     </div>
                   </div>
                 </div>
@@ -76,7 +88,6 @@ export default function AboutPage() {
                   alt="Bureau moderne Colab Office"
                   className="rounded-lg shadow-lg"
                 />
-
               </div>
             </div>
           </div>
@@ -87,10 +98,10 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                {t("ourValues") as string}
+                {getTranslation("ourValues")}
               </h2>
               <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                {t("valuesPrinciples") as string}
+                {getTranslation("valuesPrinciples")}
               </p>
             </div>
 
@@ -101,10 +112,10 @@ export default function AboutPage() {
                     <Shield className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">
-                    {t("trust") as string}
+                    {getTranslation("trust")}
                   </h3>
                   <p className="text-sm text-slate-600">
-                    {t("trustDesc") as string}
+                    {getTranslation("trustDesc")}
                   </p>
                 </CardContent>
               </Card>
@@ -115,10 +126,10 @@ export default function AboutPage() {
                     <Award className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">
-                    {t("excellence") as string}
+                    {getTranslation("excellence")}
                   </h3>
                   <p className="text-sm text-slate-600">
-                    {t("excellenceDesc") as string}
+                    {getTranslation("excellenceDesc")}
                   </p>
                 </CardContent>
               </Card>
@@ -129,10 +140,10 @@ export default function AboutPage() {
                     <Clock className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">
-                    {t("responsiveness") as string}
+                    {getTranslation("responsiveness")}
                   </h3>
                   <p className="text-sm text-slate-600">
-                    {t("responsivenessDesc") as string}
+                    {getTranslation("responsivenessDesc")}
                   </p>
                 </CardContent>
               </Card>
@@ -143,10 +154,10 @@ export default function AboutPage() {
                     <Users className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">
-                    {t("proximity") as string}
+                    {getTranslation("proximity")}
                   </h3>
                   <p className="text-sm text-slate-600">
-                    {t("proximityDesc") as string}
+                    {getTranslation("proximityDesc")}
                   </p>
                 </CardContent>
               </Card>
@@ -158,13 +169,13 @@ export default function AboutPage() {
         <section className="bg-cyan-600 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
-              {t("readyToStart") as string}
+              {getTranslation("readyToStart")}
             </h2>
             <p className="text-xl text-cyan-100 mb-8 max-w-2xl mx-auto">
-              {t("ctaText") as string}
+              {getTranslation("ctaText")}
             </p>
             <Button size="lg" variant="secondary" className="bg-white text-cyan-600 hover:bg-gray-50">
-              {t("contactUs") as string}
+              {getTranslation("contactUs")}
             </Button>
           </div>
         </section>

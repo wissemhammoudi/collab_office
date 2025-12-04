@@ -248,7 +248,7 @@ function RoomLayout({
                       <div className="text-sm opacity-95 mb-1 flex items-center gap-1">
                         <Users className="h-4 w-4" />
                         {t("capacity") as string}: {space.capacity} {t("persons") as string}
-                        {space.maxCapacity && space.maxCapacity > space.capacity && (
+                        {space.maxCapacity && space.maxCapacity > (space.capacity || 0)&& (
                           <span className="text-xs opacity-75 ml-1">
                             (max {space.maxCapacity})
                           </span>

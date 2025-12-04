@@ -24,37 +24,37 @@ export function TestimonialSection() {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      name: t("testimonial1Name") || "Alex Johnson",
-      role: t("testimonial1Role") || "Freelance Developer",
-      company   :    t("testimonial1Company") || "TechFlow",
-      content: t("testimonial1Content") || "This workspace has transformed how I work. The high-speed internet and quiet environment helped me increase my productivity by 40%. The community is amazing!",
+      name: t("testimonial1Name") as string || "Alex Johnson",
+      role: t("testimonial1Role") as string || "Freelance Developer",
+      company   :    t("testimonial1Company") as string || "TechFlow",
+      content: t("testimonial1Content") as string || "This workspace has transformed how I work. The high-speed internet and quiet environment helped me increase my productivity by 40%. The community is amazing!",
       rating: 5,
       date: "March 2024"
     },
     {
       id: 2,
-      name: t("testimonial2Name") || "Maria Rodriguez",
-      role: t("testimonial2Role") || "Marketing Director",
-      company: t("testimonial2Company") || "GrowthLab",
-      content: t("testimonial2Content") || "Our team loves the meeting rooms here. Fully equipped with everything we need, and the support staff is incredibly helpful. Highly recommended for any business!",
+      name: t("testimonial2Name") as string || "Maria Rodriguez",
+      role: t("testimonial2Role") as string || "Marketing Director",
+      company: t("testimonial2Company") as string || "GrowthLab",
+      content: t("testimonial2Content") as string || "Our team loves the meeting rooms here. Fully equipped with everything we need, and the support staff is incredibly helpful. Highly recommended for any business!",
       rating: 5,
       date: "February 2024"
     },
     {
       id: 3,
-      name: t("testimonial3Name") || "David Chen",
-      role: t("testimonial3Role") || "Startup Founder",
-      company: t("testimonial3Company") || "NexusAI",
-      content: t("testimonial3Content") || "The best coworking space in the city. The premium amenities, networking events, and professional atmosphere have been crucial for our startup's growth.",
+      name: t("testimonial3Name") as string || "David Chen",
+      role: t("testimonial3Role") as string || "Startup Founder",
+      company: t("testimonial3Company") as string || "NexusAI",
+      content: t("testimonial3Content") as string || "The best coworking space in the city. The premium amenities, networking events, and professional atmosphere have been crucial for our startup's growth.",
       rating: 5,
       date: "January 2024"
     },
     {
       id: 4,
-      name: t("testimonial4Name") || "Sarah Williams",
-      role: t("testimonial4Role") || "Remote Project Manager",
-      company: t("testimonial4Company") ||  "GlobalTech",
-      content: t("testimonial4Content") || "As a remote worker, finding the perfect workspace was challenging until I discovered this place. The 24/7 access and reliable facilities are exactly what I needed.",
+      name: t("testimonial4Name") as string || "Sarah Williams",
+      role: t("testimonial4Role") as string || "Remote Project Manager",
+      company: t("testimonial4Company") as string ||  "GlobalTech",
+      content: t("testimonial4Content") as string || "As a remote worker, finding the perfect workspace was challenging until I discovered this place. The 24/7 access and reliable facilities are exactly what I needed.",
       rating: 5,
       date: "December 2023"
     }

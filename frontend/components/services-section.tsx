@@ -138,7 +138,7 @@ export function ServicesSection() {
                 {/* Highlight Badge */}
                 {service.highlight && (
                   <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold">
-                    Most Popular
+                    {t("mostPopular") || "Most Popular"}
                   </div>
                 )}
 
@@ -185,7 +185,9 @@ export function ServicesSection() {
                           <span className="text-2xl font-bold text-slate-900">{service.price}</span>
                           <span className="text-slate-500">{service.period}</span>
                         </div>
-                        <p className="text-xs text-slate-500 mt-1">Flexible booking</p>
+                        <p className="text-xs text-slate-500 mt-1">
+                          {t("flexibleBooking") || "Flexible booking"}
+                        </p>
                       </div>
                       
                       <Button 
@@ -212,31 +214,43 @@ export function ServicesSection() {
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-4">
               <Clock className="h-6 w-6" />
             </div>
-            <h4 className="font-semibold text-slate-900 mb-2">Flexible Hours</h4>
-            <p className="text-sm text-slate-600">8:00 AM - 10:00 PM, 7 days a week</p>
+            <h4 className="font-semibold text-slate-900 mb-2">
+              {t("flexibleHours") || "Flexible Hours"}
+            </h4>
+            <p className="text-sm text-slate-600">
+              {t("hoursDescription") || "8:00 AM - 10:00 PM, 7 days a week"}
+            </p>
           </div>
           
           <div className="text-center md:text-left">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-4">
               <Users className="h-6 w-6" />
             </div>
-            <h4 className="font-semibold text-slate-900 mb-2">Community Access</h4>
-            <p className="text-sm text-slate-600">Join 50+ professionals and entrepreneurs</p>
+            <h4 className="font-semibold text-slate-900 mb-2">
+              {t("communityAccess") || "Community Access"}
+            </h4>
+            <p className="text-sm text-slate-600">
+              {t("communityDescription") || "Join 50+ professionals and entrepreneurs"}
+            </p>
           </div>
           
           <div className="text-center md:text-left">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-4">
               <Zap className="h-6 w-6" />
             </div>
-            <h4 className="font-semibold text-slate-900 mb-2">All Inclusive</h4>
-            <p className="text-sm text-slate-600">WiFi, utilities, and amenities included</p>
+            <h4 className="font-semibold text-slate-900 mb-2">
+              {t("allInclusive") || "All Inclusive"}
+            </h4>
+            <p className="text-sm text-slate-600">
+              {t("allInclusiveDescription") || "WiFi, utilities, and amenities included"}
+            </p>
           </div>
         </div>
 
         {/* CTA */}
         <div className="text-center mt-12">
           <p className="text-slate-600 mb-6">
-            Need a custom solution? Contact us for personalized plans
+            {t("customSolution") || "Need a custom solution? Contact us for personalized plans"}
           </p>
           <Button 
             size="lg"
@@ -244,7 +258,7 @@ export function ServicesSection() {
             className="border-primary text-primary hover:bg-primary/10 rounded-xl px-8"
             onClick={() => window.location.href = '/contact'}
           >
-            Contact Our Team
+            {t("contactOurTeam") || "Contact Our Team"}
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
