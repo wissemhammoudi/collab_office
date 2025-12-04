@@ -175,8 +175,8 @@ export default function ContactPage() {
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <MapPin className="h-6 w-6 text-white" />
+                        <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                          <MapPin className="h-6 w-6 text-primary" />
                         </div>
                         <div>
                           <h3 className="font-semibold text-slate-900 mb-2">{t("address") as string}</h3>
@@ -194,8 +194,8 @@ export default function ContactPage() {
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Phone className="h-6 w-6 text-white" /> 
+                        <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Phone className="h-6 w-6 text-primary" /> 
                         </div>
                         <div>
                           <h3 className="font-semibold text-slate-900 mb-2">{t("phone") as string}</h3>
@@ -218,8 +218,8 @@ export default function ContactPage() {
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Mail className="h-6 w-6 text-white" />
+                        <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Mail className="h-6 w-6 text-primary" />
                         </div>    
                         <div>
                           <h3 className="font-semibold text-slate-900 mb-2">{t("email") as string}</h3>
@@ -235,8 +235,8 @@ export default function ContactPage() {
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Clock className="h-6 w-6 text-white" />
+                        <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Clock className="h-6 w-6 text-primary" />
                         </div>
                         <div>
                           <h3 className="font-semibold text-slate-900 mb-2">{t("openingHours") as string}</h3>
@@ -316,8 +316,8 @@ export default function ContactPage() {
               
               <div className="p-6 bg-white">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-gradient-to-br from-cyan-100 to-blue-100 p-3 rounded-lg shadow-sm">
-                    <MapPin className="h-6 w-6 text-cyan-600" />
+                  <div className="bg-primary/10 text-primary p-3 rounded-lg shadow-sm">
+                    <MapPin className="h-6 w-6 text-primary" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-slate-900">{t("mapTitle") as string}</h3>

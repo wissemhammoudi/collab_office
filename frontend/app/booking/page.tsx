@@ -4,39 +4,39 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, MapPin, Users, BookOpen, Building2, Check, X, Zap, Star, Shield, Trophy } from "lucide-react"
+import { Calendar, Clock, MapPin, Users, BookOpen, Building2, Check, X, Zap, Star, Shield, Trophy, Presentation } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { useLanguage } from "@/hooks/use-language"
 
-// Formation Room - Conference style
-const formationRoom = [
+// Combined Formation & Reunion Room
+const meetingTrainingRoom = [
   {
-    id: 100,
-    type: "formation" as const,
-    available: true,
-    position: { row: 1, col: 1 },
-    price: 150,
-    priceHalfDay: 90,
-    price2Hours: 50,
-    capacity: 20,
-    features: ["Projecteur", "Tableau blanc", "WiFi", "Climatisation", "20 places"],
-  },
-]
-
-// Reunion Room - Meeting style
-const reunionRoom = [
-  {
-    id: 200,
-    type: "reunion" as const,
+    id: 300,
+    type: "meeting" as const,
     available: true,
     position: { row: 1, col: 1 },
     price: 80,
     priceHalfDay: 50,
     price2Hours: 30,
     capacity: 8,
+    maxCapacity: 20,
     features: ["Écran TV", "Tableau blanc", "WiFi", "Climatisation", "8 places", "Visioconférence"],
+    config: "meeting"
   },
+  {
+    id: 400,
+    type: "formation" as const,
+    available: true,
+    position: { row: 1, col: 2 },
+    price: 150,
+    priceHalfDay: 90,
+    price2Hours: 50,
+    capacity: 20,
+    maxCapacity: 20,
+    features: ["Projecteur", "Tableau blanc", "WiFi", "Climatisation", "20 places", "Équipement sonore"],
+    config: "formation"
+  }
 ]
 
 const room2Spaces = [
@@ -57,33 +57,40 @@ const room1Spaces = room2Spaces
 
 type AnySpace = (
   | (typeof room1Spaces)[number]
-  | (typeof formationRoom)[number]
-  | (typeof reunionRoom)[number]
-) & { capacity?: number }
+  | (typeof meetingTrainingRoom)[number]
+) & { 
+  capacity?: number 
+  maxCapacity?: number
+  config?: string
+}
 
 // Color system using primary color for all available spaces
 const COLOR_SYSTEM = {
   available: {
     study: "bg-primary hover:bg-primary/90 border-primary",
     formation: "bg-primary hover:bg-primary/90 border-primary",
-    reunion: "bg-primary hover:bg-primary/90 border-primary",
+    meeting: "bg-primary hover:bg-primary/90 border-primary",
   },
   selected: {
     study: "ring-4 ring-primary/30 scale-110 shadow-lg",
     formation: "ring-4 ring-primary/30 scale-110 shadow-lg",
-    reunion: "ring-4 ring-primary/30 scale-110 shadow-lg",
+    meeting: "ring-4 ring-primary/30 scale-110 shadow-lg",
   },
   unavailable: "bg-gray-300 border-gray-400 cursor-not-allowed opacity-70",
   legend: {
     study: "bg-primary",
     formation: "bg-primary",
-    reunion: "bg-primary",
+    meeting: "bg-primary",
     unavailable: "bg-gray-300",
   },
   accent: {
     formation: "bg-amber-100 text-amber-700 border-amber-200",
-    reunion: "bg-blue-100 text-blue-700 border-blue-200",
+    meeting: "bg-blue-100 text-blue-700 border-blue-200",
     study: "bg-emerald-100 text-emerald-700 border-emerald-200",
+  },
+  config: {
+    formation: "bg-purple-500/10 text-purple-700 border-purple-200",
+    meeting: "bg-sky-500/10 text-sky-700 border-sky-200"
   }
 }
 
@@ -92,12 +99,6 @@ function SpaceIndicator({ space, isSelected }: { space: AnySpace; isSelected: bo
     if (!space.available) return <X className="h-3 w-3 text-white" />
     if (isSelected) return <Check className="h-3 w-3 text-white" />
     return <Zap className="h-3 w-3 text-white opacity-90" />
-  }
-
-  const getTypeIcon = () => {
-    if (space.type === "formation") return <Trophy className="h-3 w-3 text-white" />
-    if (space.type === "reunion") return <Users className="h-3 w-3 text-white" />
-    return <BookOpen className="h-3 w-3 text-white" />
   }
 
   const getStatusColor = () => {
@@ -158,16 +159,29 @@ function RoomLayout({
     return COLOR_SYSTEM.accent[space.type]
   }
 
+  const getConfigAccent = (space: AnySpace) => {
+    if (space.config === "formation") return COLOR_SYSTEM.config.formation
+    if (space.config === "meeting") return COLOR_SYSTEM.config.meeting
+    return COLOR_SYSTEM.accent[space.type]
+  }
+
   const getSpaceIcon = (space: AnySpace) => {
     switch (space.type) {
-      case "formation": return <Trophy className="h-4 w-4" />
-      case "reunion": return <Users className="h-4 w-4" />
+      case "formation": return <Presentation className="h-4 w-4" />
+      case "meeting": return <Users className="h-4 w-4" />
       case "study": return <BookOpen className="h-4 w-4" />
       default: return <BookOpen className="h-4 w-4" />
     }
   }
 
-  const isRoomType = spaces.length === 1 && (spaces[0].type === "formation" || spaces[0].type === "reunion")
+  const getConfigIcon = (space: AnySpace) => {
+    if (space.config === "formation") return <Presentation className="h-4 w-4" />
+    if (space.config === "meeting") return <Users className="h-4 w-4" />
+    return getSpaceIcon(space)
+  }
+
+  const isMeetingTrainingRoom = spaces.length === 2 && 
+    (spaces[0].type === "formation" || spaces[0].type === "meeting")
 
   return (
     <div className="space-y-4">
@@ -175,12 +189,10 @@ function RoomLayout({
         <h3 className="font-semibold text-lg mb-2 text-slate-800">{roomName}</h3>
         <div className={`text-sm px-3 py-1 rounded-full inline-block mb-4 ${getSpaceAccent(spaces[0])}`}>
           <div className="flex items-center gap-1">
-            {getSpaceIcon(spaces[0])}
+            <Presentation className="h-4 w-4" />
             <span>
-              {isRoomType 
-                ? (spaces[0].type === "formation" 
-                    ? t("trainingRoomType") as string 
-                    : t("meetingRoomType") as string)
+              {isMeetingTrainingRoom 
+                ? t("meetingTrainingRoomType") as string
                 : t("studyZoneType") as string
               }
             </span>
@@ -189,40 +201,67 @@ function RoomLayout({
       </div>
 
       <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-xl border border-slate-200 shadow-sm">
-        {isRoomType ? (
-          <div className="flex justify-center">
-            {spaces.map((space) => {
-              const colors = getSpaceColors(space)
-              const gradient = getSpaceGradient(space)
-              
-              return (
-                <div key={space.id} className="relative">
-                  <button
-                    onClick={() => space.available ? onSpaceSelect(space) : null}
-                    disabled={!space.available}
-                    className={`
-                      w-full max-w-md h-40 rounded-xl border-2 transition-all duration-300 flex flex-col items-center justify-center text-white font-bold relative
-                      ${space.available ? `bg-gradient-to-br ${gradient}` : colors.bg}
-                      ${colors.selected}
-                      ${space.available ? "hover:scale-[1.02] hover:shadow-md cursor-pointer" : "cursor-not-allowed"}
-                    `}
-                  >
-                    <SpaceIndicator space={space} isSelected={selectedSpace?.id === space.id} />
-                    <div className="text-xl mb-2 flex items-center gap-2">
-                      {getSpaceIcon(space)}
-                      {space.type === "formation" ? t("trainingRoom") as string : t("meetingRoom") as string}
-                    </div>
-                    <div className="text-sm opacity-95 mb-1 flex items-center gap-1">
-                      <Users className="h-4 w-4" />
-                      {t("capacity") as string}: {space.capacity} {t("persons") as string}
-                    </div>
-                    <div className={`text-xs px-3 py-1 rounded-full mt-1 ${getSpaceAccent(space)}`}>
-                      {space.available ? t("available") as string : t("unavailable") as string}
-                    </div>
-                  </button>
-                </div>
-              )
-            })}
+        {isMeetingTrainingRoom ? (
+          <div className="space-y-6">
+            <div className="text-center mb-4">
+              <p className="text-slate-600 text-sm max-w-2xl mx-auto">
+                {t("meetingTrainingRoomDesc") as string}
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {spaces.map((space) => {
+                const colors = getSpaceColors(space)
+                const gradient = getSpaceGradient(space)
+                const configAccent = getConfigAccent(space)
+                
+                return (
+                  <div key={space.id} className="relative">
+                    <button
+                      onClick={() => space.available ? onSpaceSelect(space) : null}
+                      disabled={!space.available}
+                      className={`
+                        w-full h-48 rounded-xl border-2 transition-all duration-300 flex flex-col items-center justify-center text-white font-bold relative
+                        ${space.available ? `bg-gradient-to-br ${gradient}` : colors.bg}
+                        ${colors.selected}
+                        ${space.available ? "hover:scale-[1.02] hover:shadow-md cursor-pointer" : "cursor-not-allowed"}
+                      `}
+                    >
+                      <SpaceIndicator space={space} isSelected={selectedSpace?.id === space.id} />
+                      
+                      <div className="mb-4">
+                        <div className={`text-xs px-3 py-1 rounded-full mb-2 ${configAccent}`}>
+                          <div className="flex items-center gap-1">
+                            {getConfigIcon(space)}
+                            {space.config === "formation" 
+                              ? t("trainingConfig") as string 
+                              : t("meetingConfig") as string}
+                          </div>
+                        </div>
+                        <div className="text-lg mb-2 flex items-center gap-2">
+                          {getSpaceIcon(space)}
+                          {space.config === "formation" 
+                            ? t("trainingRoom") as string 
+                            : t("meetingRoom") as string}
+                        </div>
+                      </div>
+                      
+                      <div className="text-sm opacity-95 mb-1 flex items-center gap-1">
+                        <Users className="h-4 w-4" />
+                        {t("capacity") as string}: {space.capacity} {t("persons") as string}
+                        {space.maxCapacity && space.maxCapacity > space.capacity && (
+                          <span className="text-xs opacity-75 ml-1">
+                            (max {space.maxCapacity})
+                          </span>
+                        )}
+                      </div>
+                      <div className={`text-xs px-3 py-1 rounded-full mt-1 ${configAccent}`}>
+                        {space.available ? t("available") as string : t("unavailable") as string}
+                      </div>
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         ) : (
           <div
@@ -272,7 +311,7 @@ function RoomLayout({
           </div>
         )}
 
-        {!isRoomType && (
+        {!isMeetingTrainingRoom && (
           <div className="mt-8 text-center">
             <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/80 rounded-lg border border-slate-200">
               <div className="w-12 h-1 bg-gradient-to-r from-slate-400 to-slate-300 rounded"></div>
@@ -306,14 +345,13 @@ export default function BookingPage() {
   const currentSpaces =
     selectedRoom === "room1" ? room1Spaces :
     selectedRoom === "room2" ? room2Spaces :
-    selectedRoom === "formation" ? formationRoom :
-    reunionRoom
+    meetingTrainingRoom
 
   const getSpaceTypeName = (type: string) => {
     switch (type) {
       case "study": return t("studyZoneType") as string
-      case "formation": return t("trainingRoomType") as string
-      case "reunion": return t("meetingRoomType") as string
+      case "formation": return t("trainingConfig") as string
+      case "meeting": return t("meetingConfig") as string
       default: return t("spaceType") as string
     }
   }
@@ -349,16 +387,14 @@ export default function BookingPage() {
 
   const getRoomAccent = (room: string) => {
     switch (room) {
-      case "formation": return "bg-amber-100 text-amber-700 border-amber-200"
-      case "reunion": return "bg-blue-100 text-blue-700 border-blue-200"
+      case "meetingTraining": return "bg-purple-100 text-purple-700 border-purple-200"
       default: return "bg-emerald-100 text-emerald-700 border-emerald-200"
     }
   }
 
   const getRoomIcon = (room: string) => {
     switch (room) {
-      case "formation": return <Trophy className="h-4 w-4" />
-      case "reunion": return <Users className="h-4 w-4" />
+      case "meetingTraining": return <Presentation className="h-4 w-4" />
       default: return <BookOpen className="h-4 w-4" />
     }
   }
@@ -373,7 +409,8 @@ export default function BookingPage() {
       "Écran TV": t("tvScreen") as string,
       "Visioconférence": t("videoConference") as string,
       "Silence": t("silence") as string,
-      "Prise électrique": t("powerOutlet") as string
+      "Prise électrique": t("powerOutlet") as string,
+      "Équipement sonore": t("audioEquipment") as string
     }
 
     const parts = feature.split(" ")
@@ -389,11 +426,17 @@ export default function BookingPage() {
 
   const getSpaceTypeIcon = (type: string) => {
     switch (type) {
-      case "formation": return <Trophy className="h-5 w-5" />
-      case "reunion": return <Users className="h-5 w-5" />
+      case "formation": return <Presentation className="h-5 w-5" />
+      case "meeting": return <Users className="h-5 w-5" />
       case "study": return <BookOpen className="h-5 w-5" />
       default: return <BookOpen className="h-5 w-5" />
     }
+  }
+
+  const getConfigName = (config?: string) => {
+    if (config === "formation") return t("trainingConfig") as string
+    if (config === "meeting") return t("meetingConfig") as string
+    return ""
   }
 
   return (
@@ -427,7 +470,7 @@ export default function BookingPage() {
                 </CardTitle>
 
                 <div className="flex flex-wrap gap-3 mt-6">
-                  {["room1", "room2", "formation", "reunion"].map((room) => (
+                  {["room1", "room2", "meetingTraining"].map((room) => (
                     <Button
                       key={room}
                       variant="outline"
@@ -438,8 +481,7 @@ export default function BookingPage() {
                         {getRoomIcon(room)}
                         {room === "room1" && t("studyZone1") as string}
                         {room === "room2" && t("studyZone2") as string}
-                        {room === "formation" && t("trainingRoom") as string}
-                        {room === "reunion" && t("meetingRoom") as string}
+                        {room === "meetingTraining" && t("meetingTrainingRoom") as string}
                       </div>
                     </Button>
                   ))}
@@ -464,8 +506,7 @@ export default function BookingPage() {
                   roomName={
                     selectedRoom === "room1" ? t("quietStudyZone1") as string :
                     selectedRoom === "room2" ? t("quietStudyZone2") as string :
-                    selectedRoom === "formation" ? t("trainingRoomName") as string :
-                    t("meetingRoomName") as string
+                    t("meetingTrainingRoomName") as string
                   }
                   t={t}
                 />
@@ -490,11 +531,21 @@ export default function BookingPage() {
                         {getSpaceTypeName(selectedSpace.type)}
                       </div>
                     </Badge>
+                    {selectedSpace.config && (
+                      <Badge 
+                        className={`w-fit ${selectedSpace.config === "formation" ? COLOR_SYSTEM.config.formation : COLOR_SYSTEM.config.meeting} font-medium`}
+                      >
+                        <div className="flex items-center gap-1">
+                          {selectedSpace.config === "formation" ? <Presentation className="h-3 w-3" /> : <Users className="h-3 w-3" />}
+                          {getConfigName(selectedSpace.config)}
+                        </div>
+                      </Badge>
+                    )}
                     <Badge 
                       variant="outline" 
                       className="w-fit bg-white/10 text-white border-white/30"
                     >
-                      {selectedSpace.type === "formation" || selectedSpace.type === "reunion" 
+                      {selectedSpace.type === "formation" || selectedSpace.type === "meeting" 
                         ? `${t("completeRoom") as string} - ${selectedSpace.capacity} ${t("persons") as string}`
                         : `${t("place") as string} #${selectedSpace.id}`
                       }
@@ -507,10 +558,22 @@ export default function BookingPage() {
                   <>
                     <div className="bg-gradient-to-br from-slate-50 to-white p-5 rounded-xl border border-slate-200 shadow-sm">
                       <div className="flex items-center gap-3 mb-4">
-                        <div className={`p-2 rounded-lg ${COLOR_SYSTEM.accent[selectedSpace.type].replace('text-', 'bg-').replace(/bg-(primary|amber|blue|emerald)-\d+/, 'bg-$1/20').replace('border-', '')}`}>
+                        <div className={`p-2 rounded-lg ${(selectedSpace.config ? 
+                          (selectedSpace.config === "formation" ? COLOR_SYSTEM.config.formation : COLOR_SYSTEM.config.meeting) : 
+                          COLOR_SYSTEM.accent[selectedSpace.type]
+                        ).replace('text-', 'bg-').replace(/bg-(primary|amber|blue|emerald|purple|sky)-\d+/, 'bg-$1/20').replace('border-', '')}`}>
                           {getSpaceTypeIcon(selectedSpace.type)}
                         </div>
-                        <h4 className="font-semibold text-slate-800">{getSpaceTypeName(selectedSpace.type)}</h4>
+                        <div>
+                          <h4 className="font-semibold text-slate-800">{getSpaceTypeName(selectedSpace.type)}</h4>
+                          {selectedSpace.config && (
+                            <p className="text-sm text-slate-500">
+                              {selectedSpace.config === "formation" 
+                                ? t("trainingConfig") as string 
+                                : t("meetingConfig") as string}
+                            </p>
+                          )}
+                        </div>
                       </div>
 
                       <div className="flex flex-wrap gap-2 mb-4">
@@ -594,7 +657,7 @@ export default function BookingPage() {
                       <h4 className="font-bold text-lg mb-2">{t("totalPrice") as string}</h4>
                       <p className="text-2xl font-bold mb-1">{calculateTotal()} DT</p>
                       <p className="text-sm opacity-90">
-                        {getDurationLabel()} • {selectedSpace.type === "formation" || selectedSpace.type === "reunion" 
+                        {getDurationLabel()} • {selectedSpace.type === "formation" || selectedSpace.type === "meeting" 
                           ? t("completeRoom") as string 
                           : t("individualSeat") as string}
                       </p>

@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/hooks/use-language"
 import { useEffect, useState } from "react"
-import { Sparkles, Check, Clock, Users, Zap, ArrowRight } from "lucide-react"
+import { Sparkles, CheckCircle, Clock, Users, Zap, ArrowRight, Briefcase, BookOpen, FileText, Building } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -32,7 +32,8 @@ export function ServicesSection() {
       period: t("perHour") || "/hour",
       cta: t("reserve") || "Reserve",
       highlight: true,
-      icon: "💼"
+      icon: Briefcase,
+      color: "bg-blue-500/10 text-blue-600"
     },
     {
       id: 2,
@@ -49,7 +50,8 @@ export function ServicesSection() {
       period: t("perHour") || "/hour",
       cta: t("reserve") || "Reserve",
       highlight: false,
-      icon: "📚"
+      icon: BookOpen,
+      color: "bg-green-500/10 text-green-600"
     },
     {
       id: 3,
@@ -66,7 +68,8 @@ export function ServicesSection() {
       period: "",
       cta: t("consult") || "Consult",
       highlight: false,
-      icon: "📋"
+      icon: FileText,
+      color: "bg-purple-500/10 text-purple-600"
     },
     {
       id: 4,
@@ -83,7 +86,8 @@ export function ServicesSection() {
       period: t("perMonth") || "/month",
       cta: t("getInfo") || "Get Info",
       highlight: false,
-      icon: "🏢"
+      icon: Building,
+      color: "bg-orange-500/10 text-orange-600"
     },
   ]
 
@@ -121,82 +125,85 @@ export function ServicesSection() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
-          {services.map((service) => (
-            <div
-              key={service.id}
-              className={cn(
-                "group relative bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden",
-                service.highlight && "md:col-span-2 lg:col-span-1 border-primary/20 shadow-md"
-              )}
-            >
-              {/* Highlight Badge */}
-              {service.highlight && (
-                <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold">
-                  Most Popular
-                </div>
-              )}
-
-              <div className="p-6">
-                {/* Icon & Title */}
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-2xl">
-                    {service.icon}
+          {services.map((service) => {
+            const Icon = service.icon
+            return (
+              <div
+                key={service.id}
+                className={cn(
+                  "group relative bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden",
+                  service.highlight && "md:col-span-2 lg:col-span-1 border-primary/20 shadow-md"
+                )}
+              >
+                {/* Highlight Badge */}
+                {service.highlight && (
+                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold">
+                    Most Popular
                   </div>
-                  <div className="flex-1">
+                )}
+
+                <div className="p-6">
+                  {/* Icon & Title */}
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className={cn("flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center bg-primary/10")}>
+                      <Icon className="h-7 w-7 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-xl font-bold text-slate-900">
+                          {service.title}
+                        </h3>
+                      </div>
+                      <p className="text-sm text-primary font-medium mt-1">
+                        {service.subtitle}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-slate-600 mb-6">
+                    {service.description}
+                  </p>
+
+                  {/* Features */}
+                  <div className="space-y-3 mb-6">
+                    {service.features.map((feature, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                          <CheckCircle className="h-3 w-3 text-cyan-600" />
+                        </div>
+                        <span className="text-sm text-slate-700">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Price & CTA */}
+                  <div className="pt-6 border-t border-slate-100">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-xl font-bold text-slate-900">
-                        {service.title}
-                      </h3>
-                    </div>
-                    <p className="text-sm text-primary font-medium mt-1">
-                      {service.subtitle}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-slate-600 mb-6">
-                  {service.description}
-                </p>
-
-                {/* Features */}
-                <div className="space-y-3 mb-6">
-                  {service.features.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                        <Check className="h-3 w-3 text-green-600" />
+                      <div>
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-2xl font-bold text-slate-900">{service.price}</span>
+                          <span className="text-slate-500">{service.period}</span>
+                        </div>
+                        <p className="text-xs text-slate-500 mt-1">Flexible booking</p>
                       </div>
-                      <span className="text-sm text-slate-700">{feature}</span>
+                      
+                      <Button 
+                        className={cn(
+                          "bg-primary hover:bg-primary/90 text-white rounded-lg px-6",
+                          service.highlight && "shadow-lg shadow-primary/25"
+                        )}
+                        onClick={() => window.location.href = `/booking?service=${service.id}`}
+                      >
+                        {service.cta}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
                     </div>
-                  ))}
-                </div>
-
-                {/* Price & CTA */}
-                <div className="pt-6 border-t border-slate-100">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-2xl font-bold text-slate-900">{service.price}</span>
-                        <span className="text-slate-500">{service.period}</span>
-                      </div>
-                      <p className="text-xs text-slate-500 mt-1">Flexible booking</p>
-                    </div>
-                    
-                    <Button 
-                      className={cn(
-                        "bg-primary hover:bg-primary/90 text-white rounded-lg px-6",
-                        service.highlight && "shadow-lg shadow-primary/25"
-                      )}
-                      onClick={() => window.location.href = `/booking?service=${service.id}`}
-                    >
-                      {service.cta}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Additional Info */}

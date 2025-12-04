@@ -116,7 +116,7 @@ export function HeroSection() {
                 onClick={scrollToFeatures}
               >
                 <div className="relative flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-cyan-600 flex items-center justify-center text-white shadow">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 text-cyan-600 flex items-center justify-center shadow">
                     {feature.icon}
                   </div>
                   <div className="flex-1">

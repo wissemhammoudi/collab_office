@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle, Users, TrendingUp, Shield, Zap, Target, Award, Sparkles } from "lucide-react"
 import { useLanguage } from "@/hooks/use-language"
 import { useEffect, useState } from "react"
-import { cn } from "@/lib/utils"
 
 export function BenefitsSection() {
   const { t } = useLanguage()
@@ -135,7 +134,7 @@ export function BenefitsSection() {
                 <div className="p-6">
                   {/* Icon */}
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-4">
-                    <Icon className="h-6 w-6" />
+                    <Icon className="h-6 w-6 text-primary " />
                   </div>
 
                   {/* Content */}
@@ -167,7 +166,7 @@ export function BenefitsSection() {
 
         {/* Stats Section */}
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 mb-12">
-          <h3 className="text-2xl font-bold text-slate-900 text-center mb-8">
+          <h3 className="text-2xl font-bold text-slate-900 text-center mb-8 text-cyan-600">
             {t("performanceIndicators") || "Performance Indicators"}
           </h3>
           
@@ -186,60 +185,7 @@ export function BenefitsSection() {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="bg-gradient-to-r from-primary to-primary/90 rounded-2xl overflow-hidden shadow-lg">
-          <div className="flex flex-col lg:flex-row items-center">
-            {/* Left Content */}
-            <div className="flex-1 p-8 lg:p-12">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                {t("readyToOptimize") || "Ready to Optimize Your Workspace?"}
-              </h3>
-              <p className="text-white/90 mb-6">
-                {t("scheduleVisitDesc") || "Schedule a private tour and discover how we can support your business growth."}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button 
-                  className="bg-white text-primary hover:bg-white/90 rounded-xl px-8 py-6 font-semibold"
-                  onClick={() => window.location.href = '/tour'}
-                >
-                  {t("scheduleTour") || "Schedule a Tour"}
-                  <ArrowRight className="ml-3 h-4 w-4" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="border-white text-white hover:bg-white/10 rounded-xl px-8 py-6 font-semibold"
-                  onClick={() => window.location.href = '/brochure'}
-                >
-                  {t("downloadBrochure") || "Download Brochure"}
-                </Button>
-              </div>
-            </div>
-            
-            {/* Right Content - Additional Info */}
-            <div className="lg:w-1/3 bg-white/10 p-8 lg:p-12 border-t lg:border-t-0 lg:border-l border-white/20">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-white" />
-                  </div>
-                  <span className="text-white/90 font-medium">{t("noCommitment") || "No Commitment"}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
-                    <Shield className="h-5 w-5 text-white" />
-                  </div>
-                  <span className="text-white/90 font-medium">{t("fullyEquipped") || "Fully Equipped"}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
-                    <Users className="h-5 w-5 text-white" />
-                  </div>
-                  <span className="text-white/90 font-medium">{t("communityAccess") || "Community Access"}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
 
       <style jsx global>{`

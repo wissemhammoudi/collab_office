@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/hooks/use-language"
 import { useState } from "react"
-import { Star, Quote, ChevronLeft, ChevronRight, User, Sparkles } from "lucide-react"
+import { Star, ChevronLeft, ChevronRight, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -106,9 +106,6 @@ export function TestimonialSection() {
 
         {/* Main Testimonial Card */}
         <div className="relative mb-12">
-          <div className="absolute -top-6 -left-6 text-primary/20">
-            <Quote className="h-24 w-24" />
-          </div>
           
           <div className="relative bg-white rounded-2xl border border-slate-200 shadow-xl p-8 md:p-10 lg:p-12">
             <div className="flex flex-col lg:flex-row gap-8 items-center">
@@ -232,10 +229,6 @@ export function TestimonialSection() {
               )}
               onClick={() => goToTestimonial(index)}
             >
-              <div className="absolute -top-3 -left-3 text-primary/10">
-                <Quote className="h-8 w-8" />
-              </div>
-              
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center text-primary font-bold">
                   {testimonial.name.charAt(0)}
@@ -270,26 +263,7 @@ export function TestimonialSection() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 px-8 py-6 rounded-2xl bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20">
-            <div className="text-left">
-              <h3 className="text-xl font-bold text-slate-900">
-                {t("joinOurCommunity") || "Join Our Growing Community"}
-              </h3>
-              <p className="text-slate-600 mt-1">
-                {t("shareYourExperience") || "Share your experience and help others discover the perfect workspace"}
-              </p>
-            </div>
-            <Button 
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-5 rounded-xl font-semibold whitespace-nowrap"
-              onClick={() => window.location.href = '/share-experience'}
-            >
-              {t("shareTestimonial") || "Share Your Story"}
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </div>
+
       </div>
 
       <style jsx global>{`

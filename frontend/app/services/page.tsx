@@ -59,8 +59,8 @@ export default function ServicesPage() {
               {/* Coworking Space */}
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Users className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2 text-xl">{t("coworkingService") as string}</h3>
                   <p className="text-sm text-slate-600 mb-4">
@@ -78,8 +78,8 @@ export default function ServicesPage() {
               {/* Study Zones */}
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <BookOpen className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <BookOpen className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2 text-xl">{t("studyZonesTitle") as string}</h3>
                   <p className="text-sm text-slate-600 mb-4">
@@ -97,8 +97,8 @@ export default function ServicesPage() {
               {/* Administrative Assistance */}
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <FileText className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <FileText className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2 text-xl">{t("adminServiceTitle") as string}</h3>
                   <p className="text-sm text-slate-600 mb-4">
@@ -116,8 +116,8 @@ export default function ServicesPage() {
               {/* Domiciliation */}
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                    <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Building className="h-6 w-6 text-white" />
+                    <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Building className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2 text-xl">{t("domiciliationTitle") as string}</h3>
                   <p className="text-sm text-slate-600 mb-4">
@@ -148,8 +148,8 @@ export default function ServicesPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Wifi className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Wifi className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">{t("highSpeedWifiTitle") as string}</h3>
                   <p className="text-sm text-slate-600 mb-4">{t("highSpeedWifiDesc") as string}</p>
@@ -159,8 +159,8 @@ export default function ServicesPage() {
 
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Coffee className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Coffee className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">{t("coffeeTea") as string}</h3>
                   <p className="text-sm text-slate-600 mb-4">{t("coffeeTeaDesc") as string}</p>
@@ -170,8 +170,8 @@ export default function ServicesPage() {
 
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Zap className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Zap className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">{t("electricOutletsTitle") as string}</h3>
                   <p className="text-sm text-slate-600 mb-4">{t("electricOutletsDesc") as string}</p>
@@ -181,8 +181,8 @@ export default function ServicesPage() {
 
               <Card className="text-center p-6">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Volume2 className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Volume2 className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-900 mb-2">{t("quietEnvironmentTitle") as string}</h3>
                   <p className="text-sm text-slate-600 mb-4">{t("quietEnvironmentDesc") as string}</p>
